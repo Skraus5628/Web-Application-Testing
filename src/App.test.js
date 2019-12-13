@@ -1,9 +1,19 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import * as rtl from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
 import App from './App';
+import Dashboard from './Components/Dashboard'
+import Display from './Components/Display'
+
+
 
 test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const wrapper = rtl.render(<App />);
+  expect(wrapper).toBeVisible
 });
+
+test('renders dashboard component', () =>{
+  const wrapper = rtl.render(<Dashboard/>)
+  const element = wrapper.getByText(/hit/i)
+  expect(element).toBeInTheDocument()
+})
